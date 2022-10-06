@@ -1,5 +1,6 @@
 import java.util.Random;
 
+
 public class Password {
 	private int longitud;
 	private String password;
@@ -20,6 +21,7 @@ public class Password {
 		for(int i = 1; i<=longitud; i++) {
 			randomPassword += createRandomChar();
 		}
+		
 		this.password =randomPassword;
 	}
 	
@@ -33,4 +35,5 @@ public class Password {
 		char c = (char) (random.nextInt(126-33) + 33);
 		return c;
 	}
+	
 }

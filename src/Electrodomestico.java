@@ -4,6 +4,7 @@ public class Electrodomestico {
 	protected double precioBase, peso;
 	protected char consumoEnergetico;
 	protected String color;
+	
 	protected final double PRECIO_DEF = 100.0, PESO_DEF=5.0;
 	protected final char CONSUMO_ENERGETICO_DEF = 'F';
 	protected final String COLOR_DEF = "blanco";
