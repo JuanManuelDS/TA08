@@ -8,6 +8,7 @@ public class Ejercicio3TestApp {
 		Electrodomestico generico = new Electrodomestico();
 		Electrodomestico generico2 = new Electrodomestico(120.23, 12.0);
 		
+		
 		System.out.println("----------Electrodomestico 1----------" );
 		nevera.imprimirDatos();
 		System.out.println("----------Electrodomestico 2----------" );
@@ -16,6 +17,7 @@ public class Ejercicio3TestApp {
 		generico.imprimirDatos();
 		System.out.println("----------Electrodomestico 4----------" );
 		generico2.imprimirDatos();
+	
 	}
 
 }

@@ -8,8 +8,6 @@ public class Electrodomestico {
 	protected final double PRECIO_DEF = 100.0, PESO_DEF=5.0;
 	protected final char CONSUMO_ENERGETICO_DEF = 'F';
 	protected final String COLOR_DEF = "blanco";
-	protected final String COLORES_PERMITIDOS = "blanco negro azul rojo gris";
-	protected final String CONSUMO_ENERGETICO_PERMITIDOS = "A B C D E F";
 	
 	
 	public Electrodomestico() {
@@ -31,23 +29,37 @@ public class Electrodomestico {
 		this.precioBase = precioBase;
 		this.peso = peso;
 		this.color = checkColor(color);
-		//Seteo el consumo con el método set así controlo que se haya introducido un caracter correcto
-		setConsumoEnergetico(consumoEnergetico);
+		this.consumoEnergetico = checkConsumoEnergetico(consumoEnergetico);
+		
 	}
 	
 	public String checkColor(String color) {
-		if(COLORES_PERMITIDOS.contains(color.toLowerCase())) {
+		boolean esValido = false;
+		for(Colores col: Colores.values()) {
+			if(color.toLowerCase().equals(col.toString().toLowerCase())) {
+				esValido = true;
+			}
+		}
+		if(esValido) {
 			return color;
 		} else {
-			return color + " no está disponible, vuelva a setear el color con uno válido";
+			return COLOR_DEF;
 		}
 	}
 	
-	public boolean checkConsumoEnergetico(char consumoE) {
+	public char checkConsumoEnergetico(char consumoE) {
+		boolean esValido = false;
+		for(ConsumoEnergetico ce: ConsumoEnergetico.values()) {
+			if(consumoE == ce.toString().charAt(0)) {
+				esValido =true;
+			}
+		}
+		if(esValido)
+			return consumoE;
+		else {
+			return CONSUMO_ENERGETICO_DEF;
+		}
 		
-		if(CONSUMO_ENERGETICO_PERMITIDOS.contains(String.valueOf(consumoE)))
-			return true;
-		else return false;
 	}
 	
 	public void imprimirDatos() {
@@ -63,11 +75,7 @@ public class Electrodomestico {
 	}
 	
 	public void setConsumoEnergetico(char consumoEnergetico) {
-		if(checkConsumoEnergetico(consumoEnergetico)) {
-			this.consumoEnergetico = consumoEnergetico;
-		} else {
-			this.consumoEnergetico = 'x';
-		}
+		this.consumoEnergetico = checkConsumoEnergetico(consumoEnergetico);
 	}
 	
 	public void setColor(String color) {

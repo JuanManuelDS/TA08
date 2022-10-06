@@ -7,7 +7,6 @@ public class Serie {
 
 	private final int N_TEMPORADAS_DEF = 3;
 	private final boolean ENTREGADO_DEF = false;
-	private final String GENEROS = "acción comedia terror suspenso drama ciencia ficción histórico";
 
 	public Serie() {
 		this.titulo = "";
@@ -47,9 +46,13 @@ public class Serie {
 	}
 	
 	public String checkGenero(String genero) {
-		if(GENEROS.contains(genero)) {
-			return genero;
-		} else return "ERROR: El género seleccionado no se corresponde con uno de nuestra lista";
+		boolean esValido = false;
+		for(Generos gen : Generos.values()) {
+			if(genero.toLowerCase().equals(gen.toString().toLowerCase())) {
+				esValido=true;
+			}
+		}
+		return esValido ? genero : "";
 	}
 
 	public void setTitulo(String titulo) {
